@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
+import Image from "next/image";
 
 export default function Header() {
   const nabigationLinks = [
@@ -16,7 +17,10 @@ export default function Header() {
   const { data: session } = useSession();
   return (
     <header className="bg-[#F7F9FB] text-[#4B5563]">
-      <nav className="flex justify-between items-center p-4 ">
+      <nav className="flex justify-between items-center px-8 ">
+        <div className="h-auto">
+          <Image src="/logo.jpeg" alt="UnifyIQ Logo" width={80} height={80} />
+        </div>
         <ul className="flex space-x-4">
           {nabigationLinks.map((link) => (
             <li key={link.href}>
@@ -24,7 +28,7 @@ export default function Header() {
                 href={link.href}
                 className={cn(
                   "hover:underline",
-                  pathname === link.href ? "text-yellow-400" : "text-[#4B5563]"
+                  pathname === link.href ? "text-blue-500" : "text-[#4B5563]"
                 )}
               >
                 {link.label}
@@ -42,7 +46,7 @@ export default function Header() {
           ) : (
             <>
               <Link href="/signin" className=" hover:underline">
-                Sign In
+                Log In
               </Link>
               <Link href="/signup" className=" hover:underline">
                 Sign Up

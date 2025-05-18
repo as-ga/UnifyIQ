@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { Loader } from "lucide-react";
-
+import Image from "next/image";
 import { Input } from "@/components/ui/input";
 
 import { Button } from "@/components/ui/button";
@@ -28,7 +28,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { signIn } from "next-auth/react";
-import Image from "next/image";
+
 
 const formSchema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
@@ -79,10 +79,14 @@ export default function SignInPage() {
   }
 
   return (
-    <div className="flex flex-col min-h-screen h-full w-full items-center justify-center px-4">
-      <Card className="mx-auto max-w-md w-full">
+    <div className="flex min-h-screen h-full w-full items-center justify-center">
+       <div>
+       <Image src="/signin.jpg" alt="login" width={500} height={500} className="rounded-lg" />
+       </div>
+      <div className="flex flex-col px-4">
+      <Card className="mx-auto max-w-lg w-[450px]">
         <CardHeader>
-          <CardTitle className="text-2xl">Sign In to Your Account</CardTitle>
+          <CardTitle className="text-2xl">Login to Your Account</CardTitle>
           <CardDescription>
             Enter your email and password to sign in. If you don&#39;t have an
             account,{" "}
@@ -144,7 +148,7 @@ export default function SignInPage() {
                 />
                 <Button
                   type="submit"
-                  className="w-full cursor-pointer"
+                  className="w-full cursor-pointer bg-blue-800"
                   disabled={isLoading}
                 >
                   {isLoading ? (
@@ -181,6 +185,7 @@ export default function SignInPage() {
           </Button>
         </CardContent>
       </Card>
+    </div>
     </div>
   );
 }
