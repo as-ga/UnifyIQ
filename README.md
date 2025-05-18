@@ -1,11 +1,13 @@
 💡 Problem Statement – SynergySphere
 
-To design and build a desktop and mobile-ready platform that acts 
-like a central nervous system for team collaboration. SynergySphere should not only 
-streamline the basics like tasks and communication but also work proactively — catching 
-potential issues early and helping teams stay ahead rather than constantly reacting. 
-This means creating a system that feels supportive, insightful, and seamless — something that 
-naturally fits into the rhythm of a working team. 
+Watch the demo video here: [https://www.youtube.com/watch?v=iuJZJ2_q0Wg](https://www.youtube.com/watch?v=iuJZJ2_q0Wg)
+
+To design and build a desktop and mobile-ready platform that acts
+like a central nervous system for team collaboration. SynergySphere should not only
+streamline the basics like tasks and communication but also work proactively — catching
+potential issues early and helping teams stay ahead rather than constantly reacting.
+This means creating a system that feels supportive, insightful, and seamless — something that
+naturally fits into the rhythm of a working team.
 
 # UnifyIQ – Team Collaboration Platform
 
