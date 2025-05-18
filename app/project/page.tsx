@@ -314,9 +314,9 @@ const page = () => {
                           Project manager
                         </label>
                         <input
-                          type="number"
-                          id="age"
-                          name="age"
+                          type="text"
+                          id="name"
+                          name="name"
                           className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
                           required
                         />
