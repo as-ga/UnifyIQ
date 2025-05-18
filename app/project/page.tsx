@@ -289,6 +289,7 @@ const page = () => {
             </div>
 
             <div className="mt-3">
+                {/* Project */}
               {activeTab === "Project" && (
                 <div role="tabpanel">
                   <div className="bg-white border rounded-lg px-8 py-6  max-w-2xl">
@@ -309,7 +310,6 @@ const page = () => {
                       </div>
                       <div className="mb-4">
                         <label
-                          
                           className="block text-gray-700 font-medium mb-2">
                           Project manager
                         </label>
@@ -332,10 +332,7 @@ const page = () => {
                               className="block text-gray-700 font-medium mb-2">
                               <input
                                 type="checkbox"
-                                id="animal-cat"
-                                name="animal[]"
-                                defaultValue="cat"
-                                className="mr-2"
+                                id=""
                               />
                               Low
                             </label>
@@ -346,10 +343,7 @@ const page = () => {
                               className="block text-gray-700 font-medium mb-2">
                               <input
                                 type="checkbox"
-                                id="animal-dog"
-                                name="animal[]"
-                                defaultValue="dog"
-                                className="mr-2"
+                                id=""
                               />
                               Medium
                             </label>
@@ -360,10 +354,7 @@ const page = () => {
                               className="block text-gray-700 font-medium mb-2">
                               <input
                                 type="checkbox"
-                                id="animal-bird"
-                                name="animal[]"
-                                defaultValue="bird"
-                                className="mr-2"
+                                id=""
                               />
                               High
                             </label>
@@ -395,6 +386,7 @@ const page = () => {
                   </div>
                 </div>
               )}
+              {/* task */}
               {activeTab === "Task" && (
                 <div role="tabpanel">
                   <p className="text-gray-500 dark:text-gray-400">
