@@ -26,7 +26,7 @@ interface IProjects {
         <div className="p-4">
           <h2 className="text-2xl font-bold mb-4">Projects</h2>
           {projects.length === 0 ? (
-            <p>No projects found. Time to get productive, babe.</p>
+            <p>No projects found. Time to get productive.</p>
           ) : (
             <ul className="space-y-2">
               {projects.map((project, index) => (
@@ -54,7 +54,7 @@ interface IProjects {
           <div className="p-4">
             <h2 className="text-2xl font-bold mb-4">Tasks</h2>
             {tasks.length === 0 ? (
-              <p>No tasks found. Time to get productive, babe.</p>
+              <p>No tasks found. Time to get productive.</p>
             ) : (
               <ul className="space-y-2">
                 {tasks.map((task, index) => (
