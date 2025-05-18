@@ -1,6 +1,10 @@
+"use client";
 import React from "react";
 import Image from "next/image";
+import { useState } from "react";
 const page = () => {
+  const [activeTab, setActiveTab] = useState("Project");
+  const tabs = ["Project", "Task", "Progress"];
   return (
     <div>
       <nav className=" bg-[#badbfa] w-full flex relative justify-between items-center mx-auto px-8 h-20">
@@ -118,168 +122,305 @@ const page = () => {
           </div>
         </div>
       </nav>
-      {/* sidebar section */}
-      <section>
-        <div className="relative bg-[#c9e5ff] flex h-[calc(100vh-2rem)] w-full max-w-[20rem] flex-col   bg-clip-border p-4 text-gray-700 shadow-xl shadow-blue-gray-900/5">
-          <div className="p-4 mb-2">
-            <h5 className="block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
-              Dashboard
-            </h5>
-          </div>
-          <nav className="flex min-w-[240px] flex-col gap-1 p-2 font-sans text-base font-normal text-blue-gray-700">
-            <div className="relative block w-full">
-              <div
-                role="button"
-                className="flex items-center w-full p-0 leading-tight transition-all rounded-lg outline-none bg-blue-gray-50/50 text-start text-blue-gray-700 hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
-                <button
-                  type="button"
-                  className="flex items-center justify-between w-full p-3 font-sans text-xl antialiased font-semibold leading-snug text-left transition-colors border-b-0 select-none border-b-blue-gray-100 text-blue-gray-900 hover:text-blue-gray-900">
-                  <div className="grid mr-4 place-items-center">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      className="size-6">
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 0 1-1.125-1.125v-3.75ZM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 0 1-1.125-1.125v-8.25ZM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 0 1-1.125-1.125v-2.25Z"
-                      />
-                    </svg>
-                  </div>
-                  <p className="block mr-auto font-sans text-base antialiased font-normal leading-relaxed text-blue-gray-900">
-                    Add Project
-                  </p>
-                  <span className="ml-4">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      className="size-6">
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M12 4.5v15m7.5-7.5h-15"
-                      />
-                    </svg>
-                  </span>
-                </button>
-              </div>
+      <aside className="flex ">
+        {/* sidebar section */}
+        <section>
+          <div className="relative bg-[#c9e5ff] flex h-[calc(100vh-2rem)] w-full max-w-[20rem] flex-col   bg-clip-border p-4 text-gray-700 shadow-xl shadow-blue-gray-900/5">
+            <div className="p-4 mb-2">
+              <h5 className="block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                Dashboard
+              </h5>
             </div>
-            <div className="relative block w-full">
-              <div
-                role="button"
-                className="flex items-center w-full p-0 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
-                <button
-                  type="button"
-                  className="flex items-center justify-between w-full p-3 font-sans text-xl antialiased font-semibold leading-snug text-left transition-colors border-b-0 select-none border-b-blue-gray-100 text-blue-gray-700 hover:text-blue-gray-900">
-                  <div className="grid mr-4 place-items-center">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="None"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      className="size-6">
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672Zm-7.518-.267A8.25 8.25 0 1 1 20.25 10.5M8.288 14.212A5.25 5.25 0 1 1 17.25 10.5"
-                      />
-                    </svg>
-                  </div>
-                  <p className="block mr-auto font-sans text-base antialiased font-normal leading-relaxed text-blue-gray-900">
-                    Add Task
-                  </p>
-                  <span className="ml-4">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      className="size-6">
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M12 4.5v15m7.5-7.5h-15"
-                      />
-                    </svg>
-                  </span>
-                </button>
-              </div>
-              <div className="overflow-hidden">
-                <div className="block w-full py-1 font-sans text-sm antialiased font-light leading-normal text-gray-700">
-                  <nav className="flex min-w-[240px] flex-col gap-1 p-0 font-sans text-base font-normal text-blue-gray-700">
-                    <div
-                      role="button"
-                      className="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
-                      <div className="grid mr-4 place-items-center">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          aria-hidden="true"
-                          className="w-5 h-5">
-                          <path
-                            fillRule="evenodd"
-                            d="M2.25 2.25a.75.75 0 000 1.5H3v10.5a3 3 0 003 3h1.21l-1.172 3.513a.75.75 0 001.424.474l.329-.987h8.418l.33.987a.75.75 0 001.422-.474l-1.17-3.513H18a3 3 0 003-3V3.75h.75a.75.75 0 000-1.5H2.25zm6.04 16.5l.5-1.5h6.42l.5 1.5H8.29zm7.46-12a.75.75 0 00-1.5 0v6a.75.75 0 001.5 0v-6zm-3 2.25a.75.75 0 00-1.5 0v3.75a.75.75 0 001.5 0V9zm-3 2.25a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </div>
-                      Track Progress
+            <nav className="flex min-w-[240px] flex-col gap-1 p-2 font-sans text-base font-normal text-blue-gray-700">
+              <div className="relative block w-full">
+                <div
+                  role="button"
+                  className="flex items-center w-full p-0 leading-tight transition-all rounded-lg outline-none bg-blue-gray-50/50 text-start text-blue-gray-700 hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
+                  <button
+                    type="button"
+                    className="flex items-center justify-between w-full p-3 font-sans text-xl antialiased font-semibold leading-snug text-left transition-colors border-b-0 select-none border-b-blue-gray-100 text-blue-gray-900 hover:text-blue-gray-900">
+                    <div className="grid mr-4 place-items-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        className="size-6">
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 0 1-1.125-1.125v-3.75ZM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 0 1-1.125-1.125v-8.25ZM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 0 1-1.125-1.125v-2.25Z"
+                        />
+                      </svg>
                     </div>
-                  </nav>
+                    <p className="block mr-auto font-sans text-base antialiased font-normal leading-relaxed text-blue-gray-900">
+                      Add Project
+                    </p>
+                    <span className="ml-4">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        className="size-6">
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M12 4.5v15m7.5-7.5h-15"
+                        />
+                      </svg>
+                    </span>
+                  </button>
                 </div>
               </div>
-            </div>
-            <hr className="my-2 border-blue-gray-50" />
-            <div
-              role="button"
-              className="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
-              <div className="grid mr-4 place-items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                  className="w-5 h-5">
-                  <path
-                    fillRule="evenodd"
-                    d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+              <div className="relative block w-full">
+                <div
+                  role="button"
+                  className="flex items-center w-full p-0 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
+                  <button
+                    type="button"
+                    className="flex items-center justify-between w-full p-3 font-sans text-xl antialiased font-semibold leading-snug text-left transition-colors border-b-0 select-none border-b-blue-gray-100 text-blue-gray-700 hover:text-blue-gray-900">
+                    <div className="grid mr-4 place-items-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="None"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        className="size-6">
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672Zm-7.518-.267A8.25 8.25 0 1 1 20.25 10.5M8.288 14.212A5.25 5.25 0 1 1 17.25 10.5"
+                        />
+                      </svg>
+                    </div>
+                    <p className="block mr-auto font-sans text-base antialiased font-normal leading-relaxed text-blue-gray-900">
+                      Assign Task
+                    </p>
+                    <span className="ml-4">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        className="size-6">
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M12 4.5v15m7.5-7.5h-15"
+                        />
+                      </svg>
+                    </span>
+                  </button>
+                </div>
+                <div className="overflow-hidden">
+                  <div className="block w-full py-1 font-sans text-sm antialiased font-light leading-normal text-gray-700">
+                    <nav className="flex min-w-[240px] flex-col gap-1 p-0 font-sans text-base font-normal text-blue-gray-700">
+                      <div
+                        role="button"
+                        className="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
+                        <div className="grid mr-4 place-items-center">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            className="w-5 h-5">
+                            <path
+                              fillRule="evenodd"
+                              d="M2.25 2.25a.75.75 0 000 1.5H3v10.5a3 3 0 003 3h1.21l-1.172 3.513a.75.75 0 001.424.474l.329-.987h8.418l.33.987a.75.75 0 001.422-.474l-1.17-3.513H18a3 3 0 003-3V3.75h.75a.75.75 0 000-1.5H2.25zm6.04 16.5l.5-1.5h6.42l.5 1.5H8.29zm7.46-12a.75.75 0 00-1.5 0v6a.75.75 0 001.5 0v-6zm-3 2.25a.75.75 0 00-1.5 0v3.75a.75.75 0 001.5 0V9zm-3 2.25a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </div>
+                        Track Progress
+                      </div>
+                    </nav>
+                  </div>
+                </div>
               </div>
-              Profile
-            </div>
-            <div
-              role="button"
-              className="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
-              <div className="grid mr-4 place-items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                  className="w-5 h-5">
-                  <path
-                    fillRule="evenodd"
-                    d="M12 2.25a.75.75 0 01.75.75v9a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM6.166 5.106a.75.75 0 010 1.06 8.25 8.25 0 1011.668 0 .75.75 0 111.06-1.06c3.808 3.807 3.808 9.98 0 13.788-3.807 3.808-9.98 3.808-13.788 0-3.808-3.807-3.808-9.98 0-13.788a.75.75 0 011.06 0z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+              <hr className="my-2 border-blue-gray-50" />
+              <div
+                role="button"
+                className="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
+                <div className="grid mr-4 place-items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    className="w-5 h-5">
+                    <path
+                      fillRule="evenodd"
+                      d="M12 2.25a.75.75 0 01.75.75v9a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM6.166 5.106a.75.75 0 010 1.06 8.25 8.25 0 1011.668 0 .75.75 0 111.06-1.06c3.808 3.807 3.808 9.98 0 13.788-3.807 3.808-9.98 3.808-13.788 0-3.808-3.807-3.808-9.98 0-13.788a.75.75 0 011.06 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </div>
+                Log Out
               </div>
-              Log Out
+            </nav>
+          </div>
+        </section>
+        {/* tabs */}
+        <section>
+          <div className="tabs">
+            <div className="block w-[80vw] p-1 m-1">
+              <ul className="flex border-b border-gray-200 space-x-3 transition-all duration-300 -mb-px">
+                {tabs.map((tab) => (
+                  <li key={tab}>
+                    <button
+                      onClick={() => setActiveTab(tab)}
+                      className={`inline-block py-4 px-6 text-gray-500 hover:text-gray-800 font-medium border-b-2 border-transparent ${
+                        activeTab === tab
+                          ? "border-b-indigo-600 text-indigo-600"
+                          : ""
+                      }`}
+                      role="tab">
+                      {tab}
+                    </button>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </nav>
-        </div>
-      </section>
+
+            <div className="mt-3">
+              {activeTab === "Project" && (
+                <div role="tabpanel">
+                  <div className="bg-white border rounded-lg px-8 py-6  max-w-2xl">
+                    <form>
+                      <div className="mb-4">
+                        <label
+                          htmlFor="name"
+                          className="block text-gray-700 font-medium mb-2">
+                          Name
+                        </label>
+                        <input
+                          type="text"
+                          id="name"
+                          name="name"
+                          className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
+                          required
+                        />
+                      </div>
+                      <div className="mb-4">
+                        <label
+                          
+                          className="block text-gray-700 font-medium mb-2">
+                          Project manager
+                        </label>
+                        <input
+                          type="number"
+                          id="age"
+                          name="age"
+                          className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
+                          required
+                        />
+                      </div>
+                      <div className="mb-4">
+                        <label className="block text-gray-700 font-medium mb-2">
+                          Priority
+                        </label>
+                        <div className="flex flex-wrap -mx-2">
+                          <div className="px-2 w-1/3">
+                            <label
+                              htmlFor="animal-cat"
+                              className="block text-gray-700 font-medium mb-2">
+                              <input
+                                type="checkbox"
+                                id="animal-cat"
+                                name="animal[]"
+                                defaultValue="cat"
+                                className="mr-2"
+                              />
+                              Low
+                            </label>
+                          </div>
+                          <div className="px-2 w-1/3">
+                            <label
+                              htmlFor="animal-dog"
+                              className="block text-gray-700 font-medium mb-2">
+                              <input
+                                type="checkbox"
+                                id="animal-dog"
+                                name="animal[]"
+                                defaultValue="dog"
+                                className="mr-2"
+                              />
+                              Medium
+                            </label>
+                          </div>
+                          <div className="px-2 w-1/3">
+                            <label
+                              htmlFor="animal-bird"
+                              className="block text-gray-700 font-medium mb-2">
+                              <input
+                                type="checkbox"
+                                id="animal-bird"
+                                name="animal[]"
+                                defaultValue="bird"
+                                className="mr-2"
+                              />
+                              High
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="mb-4">
+                        <label
+                          htmlFor="message"
+                          className="block text-gray-700 font-medium mb-2">
+                          Message
+                        </label>
+                        <textarea
+                          id="message"
+                          name="message"
+                          className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
+                          rows={5}
+                          defaultValue={""}
+                        />
+                      </div>
+                      <div>
+                        <button
+                          type="submit"
+                          className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+                          Submit
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              )}
+              {activeTab === "Task" && (
+                <div role="tabpanel">
+                  <p className="text-gray-500 dark:text-gray-400">
+                    This is the{" "}
+                    <em className="font-semibold text-gray-800 dark:text-gray-200">
+                      second
+                    </em>{" "}
+                    tab’s content.
+                  </p>
+                </div>
+              )}
+              {activeTab === "Progress" && (
+                <div role="tabpanel">
+                  <p className="text-gray-500 dark:text-gray-400">
+                    This is the{" "}
+                    <em className="font-semibold text-gray-800 dark:text-gray-200">
+                      third
+                    </em>{" "}
+                    tab’s content.
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+      </aside>
     </div>
   );
 };
