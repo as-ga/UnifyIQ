@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-
+import Image from "next/image";
 import axios, { AxiosError } from "axios";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
@@ -103,7 +103,11 @@ export default function RegisterPreview() {
   }
 
   return (
-    <div className="flex min-h-[60vh] h-full w-full items-center justify-center px-4 my-3">
+    <div className="flex h-full w-full items-center justify-center mt-14">
+      <div>
+        <Image src="/login.jpg" alt="login" width={500} height={500} className="rounded-lg" />
+      </div>
+      <div className="flex min-h-[60vh] w-2xl ">
       <Card className="mx-auto w-full max-w-md">
         <CardHeader>
           <CardTitle className="text-2xl">Register</CardTitle>
@@ -177,7 +181,7 @@ export default function RegisterPreview() {
                   )}
                 />
 
-                <Button type="submit" className="w-full" disabled={isLoader}>
+                <Button type="submit" className="w-full bg-blue-800" disabled={isLoader}>
                   {isLoader ? (
                     <>
                       <Loader className="mr-2 h-4 w-4 animate-spin" />
@@ -193,11 +197,12 @@ export default function RegisterPreview() {
           <div className="mt-4 text-center text-sm">
             Already have an account?{" "}
             <Link href="/signin" className="underline">
-              Sign In
+              Log In
             </Link>
           </div>
         </CardContent>
       </Card>
+    </div>
     </div>
   );
 }

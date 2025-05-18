@@ -60,14 +60,11 @@ UnifyIQ/
 - Students Pursuing Online Education
 
 - Educational project groups
+```
 
+## 🤝 Contributors:-
 
-🤝 Contributors:-
-
-Mohit (Team Leader, Pitch & Docs)
-
-Anurag (UI/UX Designer)
-
-Nikki (Frontend Developer)
-
-Ashutosh (Backend Developer)
+- [`Mohit Rai` (Team Leader, Pitch & Docs)](https://github.com/Mohit-Rai-007)
+- [`Anurag Yadev` (UI/UX Designer)](https://github.com/anuragg66)
+- [`Nikki Yadev` (Frontend Developer)](https://github.com/NickyY28)
+- [`Ashutosh Gaurav` (Backend Developer)](https://github.com/as-ga)
