@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-6">
+    <div className="bg-[#BCDDFC] flex flex-col items-center justify-center min-h-screen p-6">
       <div className="flex items-center justify-center">
         <Image src="/logo.jpeg" alt="UnifyIQ Logo" width={300} height={300} />
       </div>
