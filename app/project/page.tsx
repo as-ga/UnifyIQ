@@ -5,69 +5,118 @@ import { useState,useEffect } from "react";
 
 interface IProjects {
     title: string;
-    description: string;
+    description: string;
   }
-const ProjectTab = () => {
-    const [projects, setProjects] = useState<IProjects[]>([]);
   
+  interface ITask {
+    title: string;
+    description: string;
+  }
+  
+  const ProjectTab = () => {
+    const [projects, setProjects] = useState<IProjects[]>([]);
+    
     useEffect(() => {
       fetch("/api/projects")
         .then((res) => res.json())
         .then((data) => setProjects(data))
         .catch((err) => console.error("Failed to load projects:", err));
     }, []);
-  
     return (
-      <div className="p-4">
-        <h2 className="text-2xl font-bold mb-4">Projects</h2>
-        {projects.length === 0 ? (
-          <p>No projects found. Time to get productive, babe.</p>
-        ) : (
-          <ul className="space-y-2">
-            {projects.map((project, index) => (
-              <li key={index} className="p-4 bg-white shadow rounded">
-                <h3 className="text-lg font-semibold">{project.title}</h3>
-                <p>{project.description}</p>
+        <div className="p-4">
+          <h2 className="text-2xl font-bold mb-4">Projects</h2>
+          {projects.length === 0 ? (
+            <p>No projects found. Time to get productive, babe.</p>
+          ) : (
+            <ul className="space-y-2">
+              {projects.map((project, index) => (
+                <li key={index} className="p-4 bg-white shadow rounded">
+                  <h3 className="text-lg font-semibold">{project.title}</h3>
+                  <p>{project.description}</p>
                 </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-};
+              ))}
+            </ul>
+          )}
+        </div>
+      );}
 
-interface ITask {
-    title: string;
-    description: string;
-  }
-const TaskTab = () => {
-    const [task, setTask] = useState<ITask[]>([]);
+      const TaskTab = () => {
+        const [tasks, setTasks] = useState<ITask[]>([]);
+        
+        useEffect(() => {
+          fetch("/api/tasks")
+            .then((res) => res.json())
+            .then((data) => setTasks(data))
+            .catch((err) => console.error("Failed to load tasks:", err));
+        }, []);
+        
+        return (
+          <div className="p-4">
+            <h2 className="text-2xl font-bold mb-4">Tasks</h2>
+            {tasks.length === 0 ? (
+              <p>No tasks found. Time to get productive, babe.</p>
+            ) : (
+              <ul className="space-y-2">
+                {tasks.map((task, index) => (
+                  <li key={index} className="p-4 bg-white shadow rounded">
+                    <h3 className="text-lg font-semibold">{task.title}</h3>
+                    <p>{task.description}</p>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        );
+      };
+
+      const progressData = {
+        completed: [
+          "Initial team kickoff meeting done",
+          "Requirement gathering completed",
+          "Project documentation uploaded"
+        ],
+        inProgress: [
+          "Design phase under review",
+          "Weekly status report drafting"
+        ],
+        upcoming: [
+          "Client feedback session",
+          "Assign roles for next sprint",
+          "Prepare budget estimate"
+        ]
+      };
   
-    useEffect(() => {
-      fetch("/api/projects")
-        .then((res) => res.json())
-        .then((data) => setTask(data))
-        .catch((err) => console.error("Failed to load projects:", err));
-    }, []);
+      interface TaskSectionProps {
+        title: string;
+        tasks: string[];
+        color: string;
+      }
+      const TaskSection = ({ title, tasks, color }: TaskSectionProps) => (
+        <div>
+          <h3 className={`text-lg font-bold text-${color}-800 dark:text-${color}-200`}>
+            {title}
+          </h3>
+          <ul className="space-y-2 mt-2">
+            {tasks.map((task, index) => (
+              <li
+                key={index}
+                className={`bg-${color}-100 dark:bg-${color}-800 text-${color}-900 dark:text-${color}-100 p-3 rounded-xl shadow-sm`}
+              >
+                {task}
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
   
-    return (
-      <div className="p-4">
-        <h2 className="text-2xl font-bold mb-4">Projects</h2>
-        {task.length === 0 ? (
-          <p>No projects found. Time to get productive, babe.</p>
-        ) : (
-          <ul className="space-y-2">
-            {task.map((task, index) => (
-              <li key={index} className="p-4 bg-white shadow rounded">
-                <h3 className="text-lg font-semibold">{task.title}</h3>
-                <p>{task.description}</p>
-                </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-};
+      const ProgressTab = () => (
+        <div role="tabpanel" className="space-y-6 p-4">
+          <TaskSection title="✅ Completed" tasks={progressData.completed} color="green" />
+          <TaskSection title="🔧 In Progress" tasks={progressData.inProgress} color="yellow" />
+          <TaskSection title="🧠 Upcoming" tasks={progressData.upcoming} color="blue" />
+        </div>
+      );
+  
 
 const page = () => {
   const [activeTab, setActiveTab] = useState("Project");
@@ -334,9 +383,10 @@ const page = () => {
           </div>
         </section>
         {/* tabs */}
-        <section>
+        {/* tabs and content section */}
+        <section className="flex-1">
           <div className="tabs">
-            <div className="block w-[80vw] p-1 m-1">
+            <div className="block w-full p-1 m-1">
               <ul className="flex border-b border-gray-200 space-x-3 transition-all duration-300 -mb-px">
                 {tabs.map((tab) => (
                   <li key={tab}>
@@ -354,32 +404,13 @@ const page = () => {
                 ))}
               </ul>
             </div>
-
-            {/* <div className="mt-3">
-              {activeTab === "Task" && (
-                <div role="tabpanel">
-                  <p className="text-gray-500 dark:text-gray-400">
-                    This is the{" "}
-                    <em className="font-semibold text-gray-800 dark:text-gray-200">
-                      second
-                    </em>{" "}
-                    tab’s content.
-                  </p>
-                </div>
-              )}
-              {activeTab === "Progress" && (
-                <div role="tabpanel">
-                  <p className="text-gray-500 dark:text-gray-400">
-                    This is the{" "}
-                    <em className="font-semibold text-gray-800 dark:text-gray-200">
-                      third
-                    </em>{" "}
-                    tab’s content.
-                  </p>
-                </div>
-              )}
-            </div> */}
-
+          </div>
+          
+          {/* Tab content */}
+          <div className="tab-content">
+            {activeTab === "Project" && <ProjectTab />}
+            {activeTab === "Task" && <TaskTab />}
+            {activeTab === "Progress" && <ProgressTab />}
           </div>
         </section>
       </aside>
