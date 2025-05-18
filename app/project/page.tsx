@@ -1,7 +1,74 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import { useState } from "react";
+import { useState,useEffect } from "react";
+
+interface IProjects {
+    title: string;
+    description: string;
+  }
+const ProjectTab = () => {
+    const [projects, setProjects] = useState<IProjects[]>([]);
+  
+    useEffect(() => {
+      fetch("/api/projects")
+        .then((res) => res.json())
+        .then((data) => setProjects(data))
+        .catch((err) => console.error("Failed to load projects:", err));
+    }, []);
+  
+    return (
+      <div className="p-4">
+        <h2 className="text-2xl font-bold mb-4">Projects</h2>
+        {projects.length === 0 ? (
+          <p>No projects found. Time to get productive, babe.</p>
+        ) : (
+          <ul className="space-y-2">
+            {projects.map((project, index) => (
+              <li key={index} className="p-4 bg-white shadow rounded">
+                <h3 className="text-lg font-semibold">{project.title}</h3>
+                <p>{project.description}</p>
+                </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
+
+interface ITask {
+    title: string;
+    description: string;
+  }
+const TaskTab = () => {
+    const [task, setTask] = useState<ITask[]>([]);
+  
+    useEffect(() => {
+      fetch("/api/projects")
+        .then((res) => res.json())
+        .then((data) => setTask(data))
+        .catch((err) => console.error("Failed to load projects:", err));
+    }, []);
+  
+    return (
+      <div className="p-4">
+        <h2 className="text-2xl font-bold mb-4">Projects</h2>
+        {task.length === 0 ? (
+          <p>No projects found. Time to get productive, babe.</p>
+        ) : (
+          <ul className="space-y-2">
+            {task.map((task, index) => (
+              <li key={index} className="p-4 bg-white shadow rounded">
+                <h3 className="text-lg font-semibold">{task.title}</h3>
+                <p>{task.description}</p>
+                </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
+
 const page = () => {
   const [activeTab, setActiveTab] = useState("Project");
   const tabs = ["Project", "Task", "Progress"];
@@ -288,105 +355,7 @@ const page = () => {
               </ul>
             </div>
 
-            <div className="mt-3">
-                {/* Project */}
-              {activeTab === "Project" && (
-                <div role="tabpanel">
-                  <div className="bg-white border rounded-lg px-8 py-6  max-w-2xl">
-                    <form>
-                      <div className="mb-4">
-                        <label
-                          htmlFor="name"
-                          className="block text-gray-700 font-medium mb-2">
-                          Name
-                        </label>
-                        <input
-                          type="text"
-                          id="name"
-                          name="name"
-                          className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
-                          required
-                        />
-                      </div>
-                      <div className="mb-4">
-                        <label
-                          className="block text-gray-700 font-medium mb-2">
-                          Project manager
-                        </label>
-                        <input
-                          type="text"
-                          id="name"
-                          name="name"
-                          className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
-                          required
-                        />
-                      </div>
-                      <div className="mb-4">
-                        <label className="block text-gray-700 font-medium mb-2">
-                          Priority
-                        </label>
-                        <div className="flex flex-wrap -mx-2">
-                          <div className="px-2 w-1/3">
-                            <label
-                              htmlFor="animal-cat"
-                              className="block text-gray-700 font-medium mb-2">
-                              <input
-                                type="checkbox"
-                                id=""
-                              />
-                              Low
-                            </label>
-                          </div>
-                          <div className="px-2 w-1/3">
-                            <label
-                              htmlFor="animal-dog"
-                              className="block text-gray-700 font-medium mb-2">
-                              <input
-                                type="checkbox"
-                                id=""
-                              />
-                              Medium
-                            </label>
-                          </div>
-                          <div className="px-2 w-1/3">
-                            <label
-                              htmlFor="animal-bird"
-                              className="block text-gray-700 font-medium mb-2">
-                              <input
-                                type="checkbox"
-                                id=""
-                              />
-                              High
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="mb-4">
-                        <label
-                          htmlFor="message"
-                          className="block text-gray-700 font-medium mb-2">
-                          Message
-                        </label>
-                        <textarea
-                          id="message"
-                          name="message"
-                          className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
-                          rows={5}
-                          defaultValue={""}
-                        />
-                      </div>
-                      <div>
-                        <button
-                          type="submit"
-                          className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
-                          Submit
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              )}
-              {/* task */}
+            {/* <div className="mt-3">
               {activeTab === "Task" && (
                 <div role="tabpanel">
                   <p className="text-gray-500 dark:text-gray-400">
@@ -409,7 +378,8 @@ const page = () => {
                   </p>
                 </div>
               )}
-            </div>
+            </div> */}
+
           </div>
         </section>
       </aside>
